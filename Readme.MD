@@ -148,7 +148,6 @@ Opens an interactive dashboard at `http://localhost:8501` showing live fraud met
 
 ![Dashboard Overview](outputs/dashboard_1.png)
 ![Fraud Trends & Alerts](outputs/dashboard_2.png)
-```
 
 ---
 
