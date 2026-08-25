@@ -40,13 +40,13 @@ Streamlit Live Dashboard
 
 ## 🔍 Key Findings (EDA)
 
-| Feature                                      | Fraud Rate Impact          |
-| -------------------------------------------- | -------------------------- |
-| Suspicious Keyword present                   | 47.3% vs 7.6% (~6x higher) |
-| International transaction                    | 37% vs 7% (~5x higher)     |
-| Night hours (12 AM–5 AM)                    | 20–38% vs 5–8% (daytime) |
-| Location, merchant category, day of week     | Weak impact                |
-| Transaction amount, account age, device type | Negligible impact          |
+| Feature | Fraud Rate Impact |
+|---|---|
+| Suspicious Keyword present | 47.3% vs 7.6% (~6x higher) |
+| International transaction | 37% vs 7% (~5x higher) |
+| Night hours (12 AM–5 AM) | 20–38% vs 5–8% (daytime) |
+| Location, merchant category, day of week | Weak impact |
+| Transaction amount, account age, device type | Negligible impact |
 
 These same three signals — **suspicious keyword, international status, and night-time transactions** — were independently confirmed as the strongest predictors when the trained model's feature coefficients were examined, validating the EDA findings statistically.
 
@@ -54,11 +54,11 @@ These same three signals — **suspicious keyword, international status, and nig
 
 ## 🤖 Model Comparison
 
-| Model                            | Type         | Precision (Fraud) | Recall (Fraud) | ROC-AUC |
-| -------------------------------- | ------------ | ----------------- | -------------- | ------- |
-| **Logistic Regression** ✅ | Supervised   | 27%               | **100%** | 0.885   |
-| Random Forest                    | Supervised   | 34%               | 32%            | 0.884   |
-| Isolation Forest                 | Unsupervised | 36%               | 36%            | —      |
+| Model | Type | Precision (Fraud) | Recall (Fraud) | ROC-AUC |
+|---|---|---|---|---|
+| **Logistic Regression** ✅ | Supervised | 27% | **100%** | 0.885 |
+| Random Forest | Supervised | 34% | 32% | 0.884 |
+| Isolation Forest | Unsupervised | 36% | 36% | — |
 
 **Logistic Regression** was selected as the final model — in fraud detection, missing a real fraud case (a false negative) is typically far more costly than a false alarm, and this model caught **100% of fraud cases** on the test set while remaining fully interpretable.
 
@@ -82,64 +82,66 @@ These same three signals — **suspicious keyword, international status, and nig
 financial_fraud_analysis/
 │
 ├── data/
-│   └── financial_fraud_detection_dataset.csv
+│   ├── credit_card_fraud_dataset.csv
+│   ├── financial_fraud_detection_dataset.csv   ← primary dataset used
+│   ├── Fraud Detection.csv
+│   └── synthetic_fraud_dataset1.csv
 │
 ├── database/
 │   └── fraud_detection.db
 │
 ├── models/
-│   ├── logistic_regression_model.pkl
-│   └── feature_columns.pkl
+│   ├── feature_columns.pkl
+│   └── logistic_regression_model.pkl
 │
 ├── notebooks/
 │   └── fraud_analysis.ipynb
 │
-├── scripts/
-│   ├── stream_simulator.py
-│   └── dashboard.py
-│
 ├── outputs/
+│   ├── dashboard_1.png
+│   ├── dashboard_2.png
 │   └── fraud_alerts.log
 │
+├── scripts/
+│   ├── dashboard.py
+│   └── stream_simulator.py
+│
 ├── .gitignore
-└── README.md
+├── financial_fraud_detection_report.pdf
+├── README.md
+└── requirements.txt
 ```
+
+> **Note:** The `data/` folder contains a few additional fraud datasets that were evaluated during planning. `financial_fraud_detection_dataset.csv` is the one actually used throughout this project (EDA, feature engineering, and modeling).
 
 ---
 
 ## 🚀 How to Run
 
 ### 1. Clone the repository
-
 ```bash
 git clone https://github.com/hraiyani-data/financial-fraud-detection.git
 cd financial-fraud-detection
 ```
 
 ### 2. Install dependencies
-
 ```bash
-pip install pandas numpy matplotlib seaborn scikit-learn streamlit
+pip install -r requirements.txt
 ```
 
 ### 3. Explore the analysis
-
 Open `notebooks/fraud_analysis.ipynb` in Jupyter or VS Code and run the cells to reproduce the full EDA, feature engineering, model training, and evaluation.
 
 ### 4. Run the real-time stream simulator
-
 ```bash
 python scripts/stream_simulator.py
 ```
-
 Simulates transactions arriving one at a time and triggers fraud alerts in real time, logged to `outputs/fraud_alerts.log`.
 
 ### 5. Launch the live dashboard
-
 ```bash
 python -m streamlit run scripts/dashboard.py
 ```
-
 Opens an interactive dashboard at `http://localhost:8501` showing live fraud metrics, charts, and recent alerts.
 
 ---
@@ -148,7 +150,6 @@ Opens an interactive dashboard at `http://localhost:8501` showing live fraud met
 
 ![Dashboard Overview](outputs/dashboard_1.png)
 ![Fraud Trends & Alerts](outputs/dashboard_2.png)
-```
 
 ---
 
@@ -171,7 +172,7 @@ The default classification threshold (0.5) maximizes recall (100%) at the cost o
 
 **Hiren Raiyani**
 Data Science & Analytics Intern @ Zidio Development
-[GitHub](https://github.com/hraiyani-data) · [LinkedIn](#)
+[GitHub](https://github.com/hraiyani-data) · [LinkedIn](https://www.linkedin.com/in/hirenraiyani?utm_source=share_via&utm_content=profile&utm_medium=member_android)
 
 ---
 
