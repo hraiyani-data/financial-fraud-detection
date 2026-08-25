@@ -170,7 +170,7 @@ The default classification threshold (0.5) maximizes recall (100%) at the cost o
 
 **Hiren Raiyani**
 Data Science & Analytics Intern @ Zidio Development
-[GitHub](https://github.com/hraiyani-data) · [LinkedIn](#)
+[GitHub](https://github.com/hraiyani-data) · [LinkedIn](https://www.linkedin.com/in/hirenraiyani?utm_source=share_via&utm_content=profile&utm_medium=member_android)
 
 ---
 
